@@ -1,0 +1,24 @@
+version: '3'
+services:
+  manager-app:
+    build:
+      context: ./
+      dockerfile: ./BusShuttleManagerDashboard/Dockerfile
+    ports:
+      - "80:80"
+    container_name: manager-app
+    volumes:
+      - ./BusShuttleManagerDashboard:/app/BusShuttleManagerDashboard
+      - ./BusShuttleAPI/:/app/BusShuttleAPI
+    environment:
+      MYSQL_ADMIN_PASS: admin
+  driver-app:
+    build:
+      context: ./BusShuttleDriverApp
+      dockerfile: Dockerfile
+    ports:
+      - "4201:4201"
+    container_name: driver-app
+    volumes:
+       - ./BusShuttleDriverApp:/usr/src/app/driver-app
+       - /usr/src/app/driver-app/node_modules
