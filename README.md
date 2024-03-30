@@ -34,17 +34,23 @@ This repository is a docker compose for replicating the local development enviro
   * `docker-compose up`
   * This might take some time for the initial build.
   * If Docker prompts to share folder(s), confirm them.
+* If you want to rebuild from scratch, try using --nocache option.
+  * `docker-compose build --no-cache`
+  * This might help if DB or any other initial setup has changed.
+* If you have changed a port in docker-compose file, this might affect some URLs in the source code, such as API_URL. In this case, you should update some URLs manually in the source code.
+  * In the BusShuttleManagerDashboard, BASE_API_URL, check this: <a href="https://github.com/hergin/BusShuttleMainRepository/blob/master/Manuals/NewDevelopmentManual.md#updating-paths-and-variables-for-local" target="_blank">https://github.com/hergin/BusShuttleMainRepository/blob/master/Manuals/NewDevelopmentManual.md#updating-paths-and-variables-for-local</a>
+  * In the BusShuttleDriverApp, BASE_API_URL, check this: <a href="https://github.com/hergin/BusShuttleMainRepository/blob/master/Manuals/NewDevelopmentManual.md#run-the-app" target="_blank">https://github.com/hergin/BusShuttleMainRepository/blob/master/Manuals/NewDevelopmentManual.md#run-the-app</a>
 
 ### Browse
 
-* Go to manager dashboard (<a href="http://localhost/BusShuttleManagerDashboard" target="_blank">http://localhost/BusShuttleManagerDashboard</a>) and add:
+* Go to manager dashboard (<a href="http://localhost/BusShuttleManagerDashboard" target="_blank">http://localhost/BusShuttleManagerDashboard</a>), login (Sample user name : `local`, its password: `local`) and add:
   * A new driver in the Drivers page
   * A new bus in the Buses page
   * A new loop in the Loops page
   * A new stop in the Stops page
   * A new inspection item in the Inspection Items page
   * Assign the newly created stop to the newly created loop in Routes page
-* Go to driver app (<a href="http://localhost:4201" target="_blank">http://localhost:4201</a>) and login and select these new driver, bus and loop.
+* Go to driver app (<a href="http://localhost:4201" target="_blank">http://localhost:4201</a>) and login (Sample user name : `shuttle`, its password: `bus`) and select these new driver, bus and loop.
   * Add some mileage information and check the inspection item.
   * Add some boarded and left behind.
   * Click Submit
